@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>글 쓰기</h1>
+
+    <form action="#" method = 'POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">작성 완료</button>
+    </form>
+    <a href="{% url "articles:index" %}">목록으로</a> 
+    {% comment %} 앱네임과 path의 경로 이름을 사용해서 url 작성 {% endcomment %}
+</body>
+</html>
