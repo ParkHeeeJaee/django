@@ -24,12 +24,30 @@ def create(request):
         form = ArticleForm(request.POST)  # <- 잘모름
         if form.is_valid():  # form이 유효한가?
             article = form.save()  # 모름
-            return redirect("articles:detail", article.pk)  # 잘 모름
+            return redirect("articles:index")
     else:
         form = ArticleForm()
     return render(request, "articles/form.html", {"form": form})  # 잘모름
 
 
-def detail(request):
+def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     return render(request, "articles/detail.html", {"article": article})
+
+
+def update(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    if request.method == "POST":
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect("articles:detail", article.pk)
+    else:
+        form = ArticleForm(instance=article)
+    return render(request, "articles/form.html", {"form": form})
+
+
+def delete(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+    article.delete()
+    return redirect('articles:index')
