@@ -27,7 +27,8 @@ def create(request):
             return redirect("articles:index")
     else:
         form = ArticleForm()
-    return render(request, "articles/form.html", {"form": form})  # 잘모름
+    return render(request, "articles/form.html", {"form": form})  
+    # from.html에 form 이라는 이름으로 객체를 넘겨줌
 
 
 def detail(request, pk):

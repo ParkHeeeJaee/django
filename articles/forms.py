@@ -7,7 +7,10 @@ class ArticleForm(
 ):  # 괄호안의 내용은 필요에 따라 변경될 수 있으나 어떤역할인지 모르곘음
     class Meta:
         model = Article  # Article을 참조?
+        exclude = ("created_at",)
         fields = [
             "title",
             "content",
-        ]  # 필드값 안의 내용은 내가 Articles 클래스 안에서 선택 가능
+        ]
+
+    # 필드값 안의 내용은 내가 Articles 클래스 안에서 선택 가능
