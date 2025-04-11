@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>메인 페이지</h1>
+    <h3>Hello {{ user.username}}</h3>
     <a href="{% url "accounts:login" %}">Login</a>
+    <form action="{% url "accounts:logout" %}">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+    <hr>
+    <a href="{% url "accounts:signup" %}">회원가입</a>
+    <form action="{% url "accounts:delete" %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="회원탈퇴">
+    </form>
+    </form>
 </body>
 </html>
